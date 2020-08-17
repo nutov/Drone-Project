@@ -1,0 +1,39 @@
+Integration/project_moduls/Classifier/Parking/test/
+Integration/project_moduls/Classifier/.ipynb_checkpoints/
+Integration/project_moduls/Classifier/__pycache__/Dataset.cpython-37.pyc
+Integration/project_moduls/Classifier/Parking/train/Empty/100067.png
+Integration/project_moduls/Classifier/Parking/train/
+Integration/project_moduls/Classifier/Parking/val/
+Integration/project_moduls/Unet/final_dataset/
+Integration/project_moduls/Unet/new_patch_dataset/remains/images/0.png
+Integration/project_moduls/Unet/new_patch_dataset/
+Integration/project_moduls/Unet/test/
+project_data/
+Integration/__pycache__/
+Integration/project_moduls/geo/__pycache__/
+Integration/project_moduls/Unet/__pycache__/
+Integration/project_moduls/Classifier/__pycache__/Model.cpython-37.pyc
+Integration/project_moduls/Classifier/test_states.csv
+Integration/project_moduls/Classifier/train_states.csv
+Integration/project_moduls/Classifier/val_states.csv
+Integration/project_moduls/Classifier/saved models/classifier.pth
+Integration/project_moduls/Classifier/saved models/trimed dataset/classifier.pth.pth
+Integration/project_moduls/Classifier/saved models/trimed dataset/test_states.csv
+Integration/project_moduls/Classifier/saved models/trimed dataset/train_states.csv
+Integration/project_moduls/Classifier/saved models/trimed dataset/val_states.csv
+Integration/project_moduls/Unet/MSE_loss_train_1.csv
+Integration/project_moduls/Unet/MSE_loss_val_1.csv
+Integration/project_moduls/Unet/res_unet_IOU_MSE_454.pth
+Integration/project_moduls/Unet/saved_models/backup networks/MSE_loss_train_1.csv
+Integration/project_moduls/Unet/saved_models/backup networks/MSE_loss_train_2.csv
+Integration/project_moduls/Unet/saved_models/backup networks/MSE_loss_train_3.csv
+Integration/project_moduls/Unet/saved_models/backup networks/MSE_loss_val_1.csv
+Integration/project_moduls/Unet/saved_models/backup networks/MSE_loss_val_2.csv
+Integration/project_moduls/Unet/saved_models/backup networks/MSE_loss_val_3.csv
+Integration/project_moduls/Unet/saved_models/backup networks/res_unet_IOU_MSE.pth
+Integration/project_moduls/Unet/saved_models/backup networks/res_unet_IOU_MSE_1064.pth
+Integration/project_moduls/Unet/saved_models/backup networks/res_unet_IOU_MSE_245.pth
+Integration/project_moduls/Unet/saved_models/backup networks/res_unet_IOU_MSE_7026.pth
+Integration/project_moduls/Unet/saved_models/new_dataset_network/MSE_loss_train_1.csv
+Integration/project_moduls/Unet/saved_models/new_dataset_network/MSE_loss_val_1.csv
+Integration/project_moduls/Unet/saved_models/new_dataset_network/res_unet_IOU_MSE_454.pth
