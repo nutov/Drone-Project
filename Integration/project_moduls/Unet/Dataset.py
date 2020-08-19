@@ -83,9 +83,7 @@ class TargetImages(torch.utils.data.Dataset):
     def __init__(self,image_folder:str = 'target_images',size:tuple = (720,1280)):
         
         self.image_folder = image_folder
-        self.images = os.listdir(self.image_folder)
-        #(768,768)
-        #(720,1280)
+        self.images = sorted_aphanumeric(os.listdir(self.image_folder))
         self.transform = torchvision.transforms.Compose([torchvision.transforms.Resize(size = size),
                                                          torchvision.transforms.ToTensor(),
                                                          torchvision.transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])

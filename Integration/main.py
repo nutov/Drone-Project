@@ -1,13 +1,14 @@
 import torch
 from project_moduls.Unet.Models import ResNetUNet_RoadSeg
 from project_moduls.Unet.Dataset import TargetImages
-from Utils import SegmentImage , GetParkingSpotCoords ,Classify
+from Utils import SegmentImage , GetParkingSpotCoords ,Classify,GetVacantParking
 import project_moduls.geo.geo as geo
 import numpy as np
 import cv2
 import PIL
 import matplotlib.pyplot as plt
 from transform import *
+
 
 if __name__ == '__main__':
     # define the unet model 
@@ -19,7 +20,5 @@ if __name__ == '__main__':
     to_print = True
 
     with torch.no_grad():
-        SegmentImage()
-        wraped = GetParkingSpotCoords()
-        print(wraped.shape)
+        GetVacantParking({},{})
 
