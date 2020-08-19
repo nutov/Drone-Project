@@ -84,11 +84,10 @@ def Classify(img,model):
     img[2,:] /= torch.tensor([0.225],dtype = torch.float32).to(device)
      
     img = img.unsqueeze(dim=0)
-    print(img.shape)
-    if len(img.shape) < 4:
-        img = torch.nn.functional.interpolate(img,size = (224,224))
-      
-    img = img.to(device)
+
+    img = torch.nn.functional.interpolate(img,size = (224,224),align_corners = True,mode = 'bilinear')
+
+    #print('img shape ',img.shape)  
     output = model(img)
     output =  torch.sigmoid(output)
     return output
@@ -136,18 +135,21 @@ def GetVacantParking(unet_cfg:dict,classifier_cfg:dict):
         img = cv2.imread('test_images\\2.png')
         #---------------------------------------------------------------
         for wraped ,pts in GetParkingSpotCoords(mask,img):
-            
-            res = Classify(wraped.transpose((2,0,1)),model)
+            #wraped = cv2.cvtColor(wraped, cv2.COLOR_BGR2RGB)
+            wraped = wraped.transpose((2,0,1))
+            #temp = wraped[0,:]
+            #wraped[0,:] = wraped[2,:]
+            #wraped[2,:] = temp
+            res = Classify(wraped,model)
             res = res.detach().cpu().numpy()
-            img_ = img
-            img_ = img_*255
-            img_ = img_.astype(np.uint8)
+            #img_ = img
+            img = img*255
+            img = img.astype(np.uint8)
             
             if res[0] == 0:
-                cv2.fillPoly(img_,[pts.astype(int)],empty_c)
+                cv2.fillPoly(img,[pts.astype(int)],empty_c)
             else:
-                
-                cv2.fillPoly(img_,[pts.astype(int)],occupied_c)
+                cv2.fillPoly(img,[pts.astype(int)],occupied_c)
 
-        cv2.imwrite(f'results\\{count}.png',cv2.cvtColor(img_, cv2.COLOR_RGB2BGR))
+        cv2.imwrite(f'results\\{count}.png',img)
 
