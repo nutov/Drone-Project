@@ -137,16 +137,16 @@ def GetVacantParking(unet_cfg:dict,classifier_cfg:dict):
         for wraped ,pts in GetParkingSpotCoords(mask,img):
             #wraped = cv2.cvtColor(wraped, cv2.COLOR_BGR2RGB)
             wraped = wraped.transpose((2,0,1))
-            #temp = wraped[0,:]
-            #wraped[0,:] = wraped[2,:]
-            #wraped[2,:] = temp
+            temp = wraped[0,:]
+            wraped[0,:] = wraped[2,:]
+            wraped[2,:] = temp
             res = Classify(wraped,model)
             res = res.detach().cpu().numpy()
             #img_ = img
             img = img*255
             img = img.astype(np.uint8)
             
-            if res[0] == 0:
+            if res[0] < 0.5:
                 cv2.fillPoly(img,[pts.astype(int)],empty_c)
             else:
                 cv2.fillPoly(img,[pts.astype(int)],occupied_c)

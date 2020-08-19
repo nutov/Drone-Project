@@ -28,7 +28,7 @@ class Classifier(nn.Module):
         self.num_ftrs = self.net.fc.in_features  
 
         self.net.fc = nn.Linear(self.num_ftrs, 1)  
-        print(self.net)
+        
         self.to(self.device) 
 
 
