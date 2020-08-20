@@ -108,7 +108,7 @@ def GetVacantParking(unet_cfg:dict,classifier_cfg:dict):
     segmentor = segmentor.to(device).eval()
 
     empty_c = (0,255,0)
-    occupied_c = (255,0,0)
+    occupied_c = (0,0,255)
     
     model_path = classifier_cfg.get('model_path','project_moduls\\Classifier\\classifier.pth')
     model = Classifier()
@@ -144,7 +144,7 @@ def GetVacantParking(unet_cfg:dict,classifier_cfg:dict):
             res = Classify(wraped,model)
             res = res.detach().cpu().numpy()
             #img_ = img
-            img = img*255
+            #img = img*255
             img = img.astype(np.uint8)
             
             if res[0] < 0.5:
