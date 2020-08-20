@@ -132,14 +132,15 @@ def GetVacantParking(unet_cfg:dict,classifier_cfg:dict):
         #---------------------------------------------------------------
         cv2.imwrite(f'temp\\mask_{count}.png', mask)
         mask = cv2.imread(f'temp\\mask_{count}.png')
-        img = cv2.imread('test_images\\2.png')
+        img = cv2.imread('test_images\\2.png',cv2.COLOR_BGR2RGB)
         #---------------------------------------------------------------
+        count_oc = 0
         for wraped ,pts in GetParkingSpotCoords(mask,img):
             #wraped = cv2.cvtColor(wraped, cv2.COLOR_BGR2RGB)
             wraped = wraped.transpose((2,0,1))
-            temp = wraped[0,:]
-            wraped[0,:] = wraped[2,:]
-            wraped[2,:] = temp
+            #temp = wraped[0,:]
+            #wraped[0,:] = wraped[2,:]
+            #wraped[2,:] = temp
             res = Classify(wraped,model)
             res = res.detach().cpu().numpy()
             #img_ = img
@@ -147,9 +148,14 @@ def GetVacantParking(unet_cfg:dict,classifier_cfg:dict):
             img = img.astype(np.uint8)
             
             if res[0] < 0.5:
+                #print(f'empty \n {pts}')
                 cv2.fillPoly(img,[pts.astype(int)],empty_c)
             else:
                 cv2.fillPoly(img,[pts.astype(int)],occupied_c)
-
+                count_oc = count_oc+1
+                #print(f'occupied \n {pts}')
+        print(count_oc)
+        plt.imshow(img)
+        plt.show()
         cv2.imwrite(f'results\\{count}.png',img)
 
