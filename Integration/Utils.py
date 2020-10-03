@@ -154,8 +154,5 @@ def GetVacantParking(unet_cfg:dict,classifier_cfg:dict):
                 cv2.fillPoly(img,[pts.astype(int)],occupied_c)
                 count_oc = count_oc+1
                 #print(f'occupied \n {pts}')
-        print(count_oc)
-        plt.imshow(img)
-        plt.show()
         cv2.imwrite(f'results\\{count}.png',img)
 
